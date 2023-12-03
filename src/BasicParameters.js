@@ -15,15 +15,14 @@ export default function BasicParameters(props) {
                         alt={props.descrWeather}
                     /> */}
                 </span>
-                <span className="current-temp">{props.temp}</span>
+                <span className="current-temp">   {props.temp}</span>
                 <sup>
-                    <a href="#" id="c-degree" className="active">
-                        ℃
-                    </a>
+                    <button className="border-0 bg-white active" id="c-degree">℃</button>
+                        
                     <span>|</span>
-                    <a href="#" id="f-degree">
+                    <button className="border-0 bg-white" id="f-degree">
                         ℉
-                    </a>
+                    </button>
                 </sup>
             </h1>
             <p className="current-time">Saturday 22:04</p>
