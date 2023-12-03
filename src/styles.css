@@ -1,0 +1,36 @@
+
+.App {
+    padding: 20px;
+    border: 3px solid #2cccff;
+    border-radius: 4px;
+}
+
+.container {
+    justify-content: center;
+}
+
+.citiesList {
+    list-style: none;
+}
+
+.citiesList a {
+    text-decoration: none;
+    color: #939aa9;
+}
+
+.city {
+    border: 2px solid #2cccff;
+    border-radius: 4px;
+    padding: 10px 15px;
+    overflow: hidden;
+}
+
+form {
+    flex-wrap: nowrap;
+}
+
+.showForecast {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+}
