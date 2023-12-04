@@ -7,12 +7,15 @@ import WeekWeather from "./WeekWeather";
 
 export default function App() {
     return (
-        <div className="App container">
-            <div className="container">
+        <div className="container">
+            <div className=" App container">
                 <CitiesList />
                 <SearchForm />
                 <WeekWeather />
             </div>
+            <p className="mt-3">
+                <a href="https://github.com/Tetiana-Breslavska/weather-app-react" target="_blanc">Open-source code, by Tetiana Breslavska</a>
+            </p>
         </div>
     );
 }
