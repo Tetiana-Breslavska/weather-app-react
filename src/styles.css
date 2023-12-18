@@ -34,3 +34,7 @@ form {
     font-size: 40px;
     font-weight: 500;
 }
+
+.card-body{
+    width: 100%;
+}

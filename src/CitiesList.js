@@ -2,8 +2,9 @@ import React from "react";
 import City from "./City";
 
 export default function CitiesList() {
+
     return (
-        <div className="row citiesList">
+        <div className="row citiesList" >
             <City name="Zaporizhzhia" />
             <City name="Lviv" />
             <City name="Sydney" />

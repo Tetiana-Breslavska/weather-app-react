@@ -4,6 +4,7 @@ import Date from './Date';
 import Temperature from './Temperature';
 
 export default function BasicParameters(props) {
+    console.log(props.data);
     
     return (
         <div className="basic-parameters">
@@ -11,8 +12,7 @@ export default function BasicParameters(props) {
                 <span className="current-city">{props.data.cityFromResponse}</span>
                 <span className="current-weather-icon">
                     <img
-                        id="icon"
-                        src={`https://openweathermap.org/img/wn/${props.data.icon}@2x.png`}
+                        src={props.data.iconUrl}
                         alt={props.data.description}
                     /> 
                 </span>
