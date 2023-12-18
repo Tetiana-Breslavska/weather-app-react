@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CurrentWeather from "./CurrentWeather";
-import CitiesList from "./CitiesList";
+import City from "./City";
 import WeekWeather from "./WeekWeather";
 
 export default function Weather() {
 
     const [city, setCity] = useState();
     const [weatherData, setWeatherData] = useState({ ready: false });
-
+    
     function handleInput(event) {
         event.preventDefault();
         setCity((event.target.value).trim().toLowerCase());
@@ -16,12 +16,13 @@ export default function Weather() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        search();
+        search(city);
 
     }
 
-    function search() {
-        let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=0571at3f6f353aad9b4552f8eoe873f5&units=metric`;
+    function search(citySearch) {
+        
+        let url = `https://api.shecodes.io/weather/v1/current?query=${citySearch}&key=0571at3f6f353aad9b4552f8eoe873f5&units=metric`;
         axios.get(url)
             .then(handleResponse)
             // .catch((error) => {
@@ -60,11 +61,37 @@ export default function Weather() {
         navigator.geolocation.getCurrentPosition(handlePosition);
     }
 
+    function handleCityList(event) {
+        event.preventDefault();
+        // setCityFromList(event.target.id);
+        search(event.target.id);
+
+    }
+
+    let citiesList = ["Zaporizhzhia", "Lviv", "Sydney", "Kyiv", "Paris"];
+
     if (weatherData.ready) {
         return (
-            <div>
+            <div> 
+                <div className="row citiesList" onClick={handleCityList}>
+                    {citiesList.map(function (city, index) {
+                        if (index < 5) {
+                            console.log(city);
+                            return (
+                                <div className="col " key={index}>
+                                    <City name={city} />
+                                </div>
+                            );
+                        } else {
+                            return null;
+                        }
+                    })}
 
-                <CitiesList />
+
+
+
+                </div>
+                
                 <div className="form row mt-5">
                     <form onSubmit={handleSubmit}>
                         <input
