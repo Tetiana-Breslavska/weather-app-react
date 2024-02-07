@@ -8,7 +8,7 @@ export default function Weather() {
 
     const [city, setCity] = useState();
     const [weatherData, setWeatherData] = useState({ ready: false });
-    
+
     function handleInput(event) {
         event.preventDefault();
         setCity((event.target.value).trim().toLowerCase());
@@ -21,20 +21,20 @@ export default function Weather() {
     }
 
     function search(citySearch) {
-        
+
         let url = `https://api.shecodes.io/weather/v1/current?query=${citySearch}&key=0571at3f6f353aad9b4552f8eoe873f5&units=metric`;
         axios.get(url)
             .then(handleResponse)
-            // .catch((error) => {
-            //     alert(`Sorry, we don't know the weather for ${city}, try going to https://www.google.com/search?q=weather+${city}`)
-            // });
+        // .catch((error) => {
+        //     alert(`Sorry, we don't know the weather for ${city}, try going to https://www.google.com/search?q=weather+${city}`)
+        // });
     }
 
     function handleResponse(response) {
         console.log(response.data);
         setWeatherData({
             ready: true,
-            coord:{
+            coord: {
                 lat: response.data.coordinates.latitude,
                 lon: response.data.coordinates.longitude
             },
@@ -72,7 +72,7 @@ export default function Weather() {
 
     if (weatherData.ready) {
         return (
-            <div> 
+            <div>
                 <div className="row citiesList" onClick={handleCityList}>
                     {citiesList.map(function (city, index) {
                         if (index < 5) {
@@ -91,7 +91,7 @@ export default function Weather() {
 
 
                 </div>
-                
+
                 <div className="form row mt-5">
                     <form onSubmit={handleSubmit}>
                         <input
@@ -108,7 +108,7 @@ export default function Weather() {
                         <button className="col-2 m-2 button-current btn btn-primary" onClick={handleSubmitCurrent}>Current</button>
                     </form>
                     <CurrentWeather data={weatherData} />
-                    <WeekWeather coordinates={weatherData.coord}/>
+                    <WeekWeather coordinates={weatherData.coord} />
                 </div>
             </div>
         );
@@ -116,8 +116,8 @@ export default function Weather() {
     else {
         handleSubmitCurrent();
         return "Loading...";
-            
 
-        
+
+
     }
 }
